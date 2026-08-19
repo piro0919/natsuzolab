@@ -3,37 +3,49 @@ import { usePathname } from "next/navigation";
 import { NextSeo, NextSeoProps } from "next-seo";
 import { OpenGraph } from "next-seo/lib/types";
 
-export type SeoProps = Pick<NextSeoProps, "title"> & Pick<OpenGraph, "type">;
+const SITE_URL = "https://www.natsuzolab.com";
+const DEFAULT_DESCRIPTION =
+  "作曲家、成田旬のウェブサイトNatsuzolabです。歌物、劇伴、ゲームのBGMなど様々な業務を行っております。";
+
+export type SeoProps = Pick<NextSeoProps, "title"> &
+  Pick<OpenGraph, "type"> & {
+    /** 省略するとサイト全体の説明が入る */
+    description?: string;
+  };
 
 export default function Seo({
+  description = DEFAULT_DESCRIPTION,
   title,
   type = "article",
 }: SeoProps): JSX.Element {
   const pathname = usePathname();
+  // og:url をトップに固定していたため、下層ページが自分自身を指していなかった
+  const url = `${SITE_URL}${pathname || ""}`;
 
   return (
     <>
       <NextSeo
-        canonical={`https://www.natsuzolab.com${pathname || ""}`}
+        canonical={url}
         defaultTitle="Natsuzolab"
-        description="作曲家、成田旬のウェブサイトNatsuzolabです。歌物、劇伴、ゲームのBGMなど様々な業務を行っております。"
+        description={description}
         openGraph={{
+          description,
           type,
+          url,
           images: [
             {
-              alt: "むつきレビン",
-              height: 256,
+              alt: "Natsuzolab",
+              height: 630,
               type: "image/png",
-              url: "https://www.natsuzolab.com/mutsukilevin.png",
-              width: 256,
+              url: `${SITE_URL}/ogp.png`,
+              width: 1200,
             },
           ],
-          url: "https://www.natsuzolab.com/",
         }}
         title={title}
         titleTemplate="%s - Natsuzolab"
         twitter={{
-          cardType: "summary",
+          cardType: "summary_large_image",
         }}
         useAppDir={true}
       />

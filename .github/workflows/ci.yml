@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # lint と型検査は Contentful の型生成を先に通す必要があり、それには
+  # CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN / CONTENTFUL_SPACE_ID /
+  # CONTENTFUL_ENVIRONMENT が要る。Secrets を入れるまでは、ロックが
+  # package.json と揃っているかだけを見る。
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.2
+          cache: npm
+      - run: npm ci

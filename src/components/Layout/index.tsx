@@ -14,7 +14,7 @@ export type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  const [footerRef, { height }] = useElementSize();
+  const [footerRef, { height = 0 }] = useElementSize();
   const {
     setFalse: offIsOpen,
     setTrue: onIsOpen,

@@ -30,7 +30,7 @@ function Article({
   initialCount = 3,
   works,
 }: ArticleProps): JSX.Element {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const collapse = useCollapse();
   const items = useMemo(
     () =>
       works.map(({ title, url }) => (
@@ -59,14 +59,14 @@ function Article({
         <ul className={styles.list}>
           {items.filter((_, index) => index < initialCount)}
         </ul>
-        <ul {...getCollapseProps()}>
+        <ul {...collapse.getCollapseProps()}>
           {items.filter((_, index) => index >= initialCount)}
         </ul>
       </div>
       <div className={styles.bottomWrapper}>
         {items.at(initialCount) ? (
-          <button {...getToggleProps()}>
-            {isExpanded ? (
+          <button {...collapse.getToggleProps()}>
+            {collapse.isExpanded ? (
               <IoChevronUpCircleSharp color="#fff" size={24} />
             ) : (
               <IoChevronDownCircleSharp color="#fff" size={24} />

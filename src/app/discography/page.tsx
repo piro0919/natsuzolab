@@ -1,6 +1,14 @@
 import * as contentful from "contentful";
 import Discography from "components/Discography";
 import client from "libs/client";
+import createMetadata from "libs/createMetadata";
+
+export const metadata = createMetadata({
+  description:
+    "作曲家・成田旬のディスコグラフィです。参加作品と音源をまとめています。",
+  path: "/discography",
+  title: "Discography",
+});
 
 // revalidate every hour
 export const revalidate = 3600;

@@ -1,6 +1,14 @@
 import * as contentful from "contentful";
 import Profile, { ProfileProps } from "components/Profile";
 import client from "libs/client";
+import createMetadata from "libs/createMetadata";
+
+export const metadata = createMetadata({
+  description:
+    "作曲家・成田旬のプロフィールです。これまでの経歴と、手掛けている仕事の内容を掲載しています。",
+  path: "/profile",
+  title: "Profile",
+});
 
 // revalidate every hour
 export const revalidate = 3600;

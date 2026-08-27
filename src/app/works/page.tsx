@@ -1,6 +1,14 @@
 import * as contentful from "contentful";
 import Works, { WorksProps } from "components/Works";
 import client from "libs/client";
+import createMetadata from "libs/createMetadata";
+
+export const metadata = createMetadata({
+  description:
+    "作曲家・成田旬のこれまでの仕事をまとめています。歌物、劇伴、ゲームBGM、楽器演奏などの実績をご覧いただけます。",
+  path: "/works",
+  title: "Works",
+});
 
 // revalidate every hour
 export const revalidate = 3600;

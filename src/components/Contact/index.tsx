@@ -8,6 +8,7 @@ type FieldValues = {
   message: string;
   name: string;
   subject: string;
+  website: string;
 };
 
 export type ContactProps = {
@@ -21,6 +22,7 @@ export default function Contact({ onSubmit }: ContactProps): JSX.Element {
       message: "",
       name: "",
       subject: "",
+      website: "",
     },
   });
 
@@ -63,6 +65,26 @@ export default function Contact({ onSubmit }: ContactProps): JSX.Element {
                 {...register("message", { required: true })}
                 className={styles.textarea}
                 minRows={4}
+              />
+            </label>
+          </div>
+          {/* ボット除けの囮。人には見えず、読み上げにも乗らない */}
+          <div
+            aria-hidden="true"
+            style={{
+              height: 1,
+              left: -9999,
+              overflow: "hidden",
+              position: "absolute",
+              width: 1,
+            }}
+          >
+            <label>
+              Website
+              <input
+                {...register("website")}
+                autoComplete="off"
+                tabIndex={-1}
               />
             </label>
           </div>

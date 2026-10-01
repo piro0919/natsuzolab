@@ -73,7 +73,8 @@
     "stylelint-sass-render-errors": "3.2.1",
     "swiper": "8.4.7",
     "typescript": "4.9.5",
-    "usehooks-ts": "2.16.0"
+    "usehooks-ts": "2.16.0",
+    "zod": "3.25.76"
   },
   "name": "bekko-",
   "private": true,

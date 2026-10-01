@@ -168,7 +168,12 @@ export default function Discography({
                 <ul className={styles.list}>
                   {boothList.map(({ jacketUrl, title, url }) => (
                     <li key={url}>
-                      <a href={url} rel="noreferrer" target="_blank">
+                      <a
+                        aria-label={title}
+                        href={url}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
                         <div className={styles.imageWrapper}>
                           <LazyLoad>
                             <Image

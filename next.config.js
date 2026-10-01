@@ -1,3 +1,7 @@
+const path = require("path");
+
+const isDev = process.env.NODE_ENV === "development";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -8,17 +12,10 @@ const nextConfig = {
   },
   reactStrictMode: true,
   sassOptions: {
-    additionalData: async (content, { resourcePath }) => {
-      if (resourcePath.includes("node_modules")) {
-        return content;
-      }
-
-      if (resourcePath.endsWith("mq-settings.scss")) {
-        return process.env.NODE_ENV === "production" ? "" : content;
-      }
-
-      return "@use 'styles/mq' as mq;" + content;
-    },
+    /* Turbopack は関数を渡せないので文字列で前置する。$is-dev は
+       mq-settings.scss が開発中だけブレークポイントを表示するのに使う。 */
+    additionalData: `$is-dev: ${isDev};\n@use 'styles/mq' as mq;\n`,
+    loadPaths: [path.join(__dirname, "src")],
   },
 };
 

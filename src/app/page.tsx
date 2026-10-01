@@ -1,4 +1,5 @@
 import * as contentful from "contentful";
+import { type JSX } from "react";
 import Home, { HomeProps } from "components/Home";
 import client from "libs/client";
 
@@ -15,7 +16,6 @@ async function getNews(): Promise<NewsData> {
     order: "-fields.date",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -29,7 +29,6 @@ async function getYouTube(): Promise<YouTubeData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 

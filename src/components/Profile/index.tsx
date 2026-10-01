@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { type JSX } from "react";
 import styles from "./style.module.scss";
 
 type WorkInCharge = {

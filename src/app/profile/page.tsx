@@ -1,4 +1,5 @@
 import * as contentful from "contentful";
+import { type JSX } from "react";
 import Profile, { ProfileProps } from "components/Profile";
 import client from "libs/client";
 import createMetadata from "libs/createMetadata";
@@ -23,7 +24,6 @@ async function getWorkInCharge(): Promise<WorkInChargeData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 

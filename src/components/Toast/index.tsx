@@ -1,4 +1,5 @@
 "use client";
+import { type JSX } from "react";
 import { ToastContainer } from "react-toastify";
 
 export default function Toast(): JSX.Element {

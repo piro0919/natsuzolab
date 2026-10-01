@@ -1,6 +1,6 @@
 import { Comfortaa } from "next/font/google";
 import Link from "next/link";
-import { MouseEventHandler, useEffect } from "react";
+import { type JSX, MouseEventHandler, useEffect } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
 import Spacer from "react-spacer";
 import { useScrollYPosition } from "react-use-scroll-position";

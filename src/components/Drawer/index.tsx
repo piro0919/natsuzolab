@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { type JSX } from "react";
 import ReactModernDrawer from "react-modern-drawer";
 import styles from "./style.module.scss";
 

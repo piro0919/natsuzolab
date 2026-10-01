@@ -1,8 +1,8 @@
 "use client";
 import queryString from "query-string";
-import { useEffect, useState } from "react";
+import { type JSX, useState } from "react";
 import useScrollbarSize from "react-scrollbar-size";
-import { Autoplay, Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -37,14 +37,11 @@ export default function Home({
     value: isOpen,
   } = useBoolean();
   const [url, setUrl] = useState("");
-
-  useEffect(() => {
-    if (isOpen) {
-      return;
-    }
-
+  // 閉じたら URL も空にして、次に開くまで動画を読み込ませない
+  const handleClose = (): void => {
+    offIsOpen();
     setUrl("");
-  }, [isOpen]);
+  };
 
   return (
     <>
@@ -112,7 +109,7 @@ export default function Home({
       </div>
       <YouTubeModal
         isOpen={isOpen}
-        onClose={offIsOpen}
+        onClose={handleClose}
         videoId={queryString.parseUrl(url).query.v?.toString() || ""}
       />
     </>

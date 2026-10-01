@@ -1,5 +1,5 @@
 // eslint-disable-next-line filenames/match-exported
-import { ReactNode } from "react";
+import { type JSX, ReactNode } from "react";
 import createMetadata from "libs/createMetadata";
 
 /* ページ本体が "use client" なので metadata を置けない。

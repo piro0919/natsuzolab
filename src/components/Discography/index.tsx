@@ -2,7 +2,7 @@
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import queryString from "query-string";
-import { useEffect, useState } from "react";
+import { type JSX, useState } from "react";
 import LazyLoad from "react-lazy-load";
 import { useBoolean } from "usehooks-ts";
 import styles from "./style.module.scss";
@@ -51,14 +51,11 @@ export default function Discography({
     value: isOpen,
   } = useBoolean();
   const [url, setUrl] = useState("");
-
-  useEffect(() => {
-    if (isOpen) {
-      return;
-    }
-
+  // 閉じたら URL も空にして、次に開くまで動画を読み込ませない
+  const handleClose = (): void => {
+    offIsOpen();
     setUrl("");
-  }, [isOpen]);
+  };
 
   return (
     <>
@@ -196,7 +193,7 @@ export default function Discography({
       </div>
       <YouTubeModal
         isOpen={isOpen}
-        onClose={offIsOpen}
+        onClose={handleClose}
         videoId={queryString.parseUrl(url).query.v?.toString() || ""}
       />
     </>

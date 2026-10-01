@@ -1,3 +1,4 @@
+import { type JSX } from "react";
 import { SocialIcon } from "react-social-icons";
 import Spacer from "react-spacer";
 import styles from "./style.module.scss";

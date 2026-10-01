@@ -1,12 +1,10 @@
 /* eslint-disable filenames/match-exported */
 import { type Metadata } from "next";
-// eslint-disable-next-line camelcase
 import { Zen_Kaku_Gothic_New } from "next/font/google";
-import { ReactNode } from "react";
+import { type JSX, ReactNode } from "react";
 import "react-modern-drawer/dist/index.css";
 import "react-toastify/dist/ReactToastify.css";
 import "ress/dist/ress.min.css";
-// eslint-disable-next-line postcss-modules/no-unused-class
 import "./globals.scss";
 import "./mq-settings.scss";
 import Analytics from "components/Analytics";

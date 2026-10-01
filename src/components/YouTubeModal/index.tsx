@@ -1,4 +1,5 @@
 "use client";
+import { type JSX } from "react";
 import ModalVideo, { ModalVideoProps } from "react-modal-video";
 
 export type YouTubeModalProps = Pick<ModalVideoProps, "isOpen" | "onClose"> & {

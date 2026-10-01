@@ -1,4 +1,5 @@
 import * as contentful from "contentful";
+import { type JSX } from "react";
 import Works, { WorksProps } from "components/Works";
 import client from "libs/client";
 import createMetadata from "libs/createMetadata";
@@ -22,7 +23,6 @@ async function getAndMore(): Promise<AndMoreData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -35,7 +35,6 @@ async function getDramaCd(): Promise<DramaCdData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -48,7 +47,6 @@ async function getGameMusic(): Promise<GameMusicData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -62,7 +60,6 @@ async function getIncidentalMusic(): Promise<IncidentalMusicData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -76,7 +73,6 @@ async function getInstrumentPlaying(): Promise<InstrumentPlayingData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -89,7 +85,6 @@ async function getSongMusic(): Promise<SongMusicData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 

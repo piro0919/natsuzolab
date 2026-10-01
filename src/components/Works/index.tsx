@@ -1,8 +1,7 @@
 "use client";
-// eslint-disable-next-line camelcase
 import { Sawarabi_Gothic } from "next/font/google";
-import { useMemo } from "react";
-import useCollapse from "react-collapsed";
+import { type JSX, useMemo } from "react";
+import { useCollapse } from "react-collapsed";
 import {
   IoChevronDownCircleSharp,
   IoChevronUpCircleSharp,

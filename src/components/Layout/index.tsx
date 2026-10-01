@@ -2,7 +2,7 @@
 import NoSSR from "@mpth/react-no-ssr";
 import { usePathname } from "next/navigation";
 import noScroll from "no-scroll";
-import { ReactNode, useEffect } from "react";
+import { type JSX, ReactNode, useEffect } from "react";
 import { useBoolean, useElementSize } from "usehooks-ts";
 import styles from "./style.module.scss";
 import Drawer from "components/Drawer";

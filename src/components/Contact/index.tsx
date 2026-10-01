@@ -1,4 +1,5 @@
 "use client";
+import { type JSX } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
 import styles from "./style.module.scss";

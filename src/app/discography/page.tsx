@@ -1,4 +1,5 @@
 import * as contentful from "contentful";
+import { type JSX } from "react";
 import Discography from "components/Discography";
 import client from "libs/client";
 import createMetadata from "libs/createMetadata";
@@ -22,7 +23,6 @@ async function getAppleMusic(): Promise<AppleMusicData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -35,7 +35,6 @@ async function getBooth(): Promise<BoothData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -48,7 +47,6 @@ async function getSpotify(): Promise<SpotifyData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 
@@ -61,7 +59,6 @@ async function getYouTube(): Promise<YouTubeData> {
     order: "-sys.createdAt",
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return entries;
 }
 

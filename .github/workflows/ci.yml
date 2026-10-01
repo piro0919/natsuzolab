@@ -6,10 +6,10 @@ on:
   pull_request:
 
 jobs:
-  # lint と型検査は Contentful の型生成を先に通す必要があり、それには
-  # CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN / CONTENTFUL_SPACE_ID /
-  # CONTENTFUL_ENVIRONMENT が要る。Secrets を入れるまでは、ロックが
-  # package.json と揃っているかだけを見る。
+  # 本物の Contentful の型は Management API から生成するのでトークンが要る。
+  # CI には Secrets を置かず、コードが読むフィールドだけを書いたスタブ
+  # (.github/stubs/contentful.d.ts) を生成先へ複写して lint と型検査を通す。
+  # ビルドは Contentful からデータを取るので CI では走らせない。
   ci:
     runs-on: ubuntu-latest
     steps:
@@ -19,3 +19,9 @@ jobs:
           node-version: 22.23.2
           cache: npm
       - run: npm ci
+      - name: Use the Contentful type stub
+        run: |
+          mkdir -p @types/generated
+          cp .github/stubs/contentful.d.ts @types/generated/contentful.d.ts
+      - run: npm run lint
+      - run: npm run type-check

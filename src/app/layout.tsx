@@ -1,7 +1,7 @@
 /* eslint-disable filenames/match-exported */
-// eslint-disable-next-line camelcase
-import { Zen_Kaku_Gothic_New } from "@next/font/google";
 import { type Metadata } from "next";
+// eslint-disable-next-line camelcase
+import { Zen_Kaku_Gothic_New } from "next/font/google";
 import { ReactNode } from "react";
 import "react-modern-drawer/dist/index.css";
 import "react-toastify/dist/ReactToastify.css";

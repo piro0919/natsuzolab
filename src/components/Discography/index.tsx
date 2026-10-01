@@ -1,5 +1,5 @@
 "use client";
-import { Poppins } from "@next/font/google";
+import { Poppins } from "next/font/google";
 import Image from "next/image";
 import queryString from "query-string";
 import { useEffect, useState } from "react";

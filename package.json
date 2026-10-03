@@ -89,7 +89,7 @@
     "zod": "3.25.76"
   },
   "engines": {
-    "node": "24.x"
+    "node": "24.21.0"
   },
   "name": "bekko-",
   "private": true,

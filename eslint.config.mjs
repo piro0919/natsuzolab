@@ -9,6 +9,7 @@ import sortKeysShorthand from "eslint-plugin-sort-keys-shorthand";
 import unusedImports from "eslint-plugin-unused-imports";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import magicNumbers from "@piro0919/eslint-config";
 
 const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url)),
@@ -141,6 +142,8 @@ const eslintConfig = [
       react: { version: "19.3" },
     },
   },
+  // 名前の無い数字を警告する（全リポジトリで共有する piro0919/eslint-config）
+  ...magicNumbers(),
 ];
 
 export default eslintConfig;

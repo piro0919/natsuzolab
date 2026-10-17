@@ -108,6 +108,6 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "@piro0919/eslint-config": "github:piro0919/eslint-config#v1.0.0"
+    "@piro0919/eslint-config": "github:piro0919/eslint-config#v1.1.0"
   }
 }

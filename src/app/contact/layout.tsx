@@ -1,4 +1,4 @@
-// eslint-disable-next-line filenames/match-exported
+/* eslint-disable filenames/match-exported */
 import { type JSX, ReactNode } from "react";
 import createMetadata from "libs/createMetadata";
 

@@ -1,4 +1,4 @@
-// eslint-disable-next-line filenames/match-exported
+/* eslint-disable filenames/match-exported */
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import { z } from "zod";

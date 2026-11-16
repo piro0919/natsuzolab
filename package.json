@@ -101,7 +101,7 @@
     "lint:es": "eslint .",
     "lint:style": "stylelint --fix '**/*.scss'",
     "prebuild": "npm run contentful-typescript-codegen",
-    "prepare": "npx husky install",
+    "prepare": "husky",
     "prettier": "prettier --write .",
     "start": "next start",
     "type-check": "tsc --noemit"

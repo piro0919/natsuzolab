@@ -2,6 +2,7 @@ import * as contentful from "contentful";
 import { type JSX } from "react";
 import Discography from "components/Discography";
 import client from "libs/client";
+import type { Skeleton } from "libs/skeleton";
 import createMetadata from "libs/createMetadata";
 
 export const metadata = createMetadata({
@@ -14,49 +15,69 @@ export const metadata = createMetadata({
 // revalidate every hour
 export const revalidate = 3600;
 
-type AppleMusicData = contentful.EntryCollection<Contentful.IAppleMusicFields>;
+type AppleMusicData = contentful.EntryCollection<
+  Skeleton<Contentful.IAppleMusicFields>,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
 
 async function getAppleMusic(): Promise<AppleMusicData> {
   const contentType: Contentful.CONTENT_TYPE = "appleMusic";
-  const entries = await client.getEntries<Contentful.IAppleMusicFields>({
+  const entries = await client.withoutUnresolvableLinks.getEntries<
+    Skeleton<Contentful.IAppleMusicFields>
+  >({
     content_type: contentType,
-    order: "-sys.createdAt",
+    order: ["-sys.createdAt"],
   });
 
   return entries;
 }
 
-type BoothData = contentful.EntryCollection<Contentful.IBoothFields>;
+type BoothData = contentful.EntryCollection<
+  Skeleton<Contentful.IBoothFields>,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
 
 async function getBooth(): Promise<BoothData> {
   const contentType: Contentful.CONTENT_TYPE = "booth";
-  const entries = await client.getEntries<Contentful.IBoothFields>({
+  const entries = await client.withoutUnresolvableLinks.getEntries<
+    Skeleton<Contentful.IBoothFields>
+  >({
     content_type: contentType,
-    order: "-sys.createdAt",
+    order: ["-sys.createdAt"],
   });
 
   return entries;
 }
 
-type SpotifyData = contentful.EntryCollection<Contentful.ISpotifyFields>;
+type SpotifyData = contentful.EntryCollection<
+  Skeleton<Contentful.ISpotifyFields>,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
 
 async function getSpotify(): Promise<SpotifyData> {
   const contentType: Contentful.CONTENT_TYPE = "spotify";
-  const entries = await client.getEntries<Contentful.ISpotifyFields>({
+  const entries = await client.withoutUnresolvableLinks.getEntries<
+    Skeleton<Contentful.ISpotifyFields>
+  >({
     content_type: contentType,
-    order: "-sys.createdAt",
+    order: ["-sys.createdAt"],
   });
 
   return entries;
 }
 
-type YouTubeData = contentful.EntryCollection<Contentful.IYouTubeFields>;
+type YouTubeData = contentful.EntryCollection<
+  Skeleton<Contentful.IYouTubeFields>,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
 
 async function getYouTube(): Promise<YouTubeData> {
   const contentType: Contentful.CONTENT_TYPE = "youTube";
-  const entries = await client.getEntries<Contentful.IYouTubeFields>({
+  const entries = await client.withoutUnresolvableLinks.getEntries<
+    Skeleton<Contentful.IYouTubeFields>
+  >({
     content_type: contentType,
-    order: "-sys.createdAt",
+    order: ["-sys.createdAt"],
   });
 
   return entries;
@@ -75,21 +96,11 @@ export default async function Page(): Promise<JSX.Element> {
     .filter((url): url is string => !!url)
     .map((url) => ({ url }));
   const boothList = boothData.items.map(
-    ({
-      fields: {
-        jacket: {
-          fields: {
-            file: { url: jacketUrl },
-          },
-        },
-        title,
-        url,
-      },
-    }) => ({
-      jacketUrl,
+    ({ fields: { jacket, title, url } }) => ({
       title,
       url,
-    })
+      jacketUrl: jacket?.fields.file?.url ?? "",
+    }),
   );
   const spotifyList = spotifyData.items.map(({ fields: { url } }) => ({
     url,

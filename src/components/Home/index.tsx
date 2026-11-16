@@ -30,7 +30,7 @@ export default function Home({
   youTubeList,
 }: HomeProps): JSX.Element {
   const { width: scrollbarWidth } = useScrollbarSize();
-  const { width } = useWindowSize();
+  const { width = 0 } = useWindowSize({ initializeWithValue: false });
   const {
     setFalse: offIsOpen,
     setTrue: onIsOpen,

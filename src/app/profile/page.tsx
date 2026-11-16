@@ -2,6 +2,7 @@ import * as contentful from "contentful";
 import { type JSX } from "react";
 import Profile, { ProfileProps } from "components/Profile";
 import client from "libs/client";
+import type { Skeleton } from "libs/skeleton";
 import createMetadata from "libs/createMetadata";
 
 export const metadata = createMetadata({
@@ -14,14 +15,18 @@ export const metadata = createMetadata({
 // revalidate every hour
 export const revalidate = 3600;
 
-type WorkInChargeData =
-  contentful.EntryCollection<Contentful.IWorkInChargeFields>;
+type WorkInChargeData = contentful.EntryCollection<
+  Skeleton<Contentful.IWorkInChargeFields>,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
 
 async function getWorkInCharge(): Promise<WorkInChargeData> {
   const contentType: Contentful.CONTENT_TYPE = "workInCharge";
-  const entries = await client.getEntries<Contentful.IWorkInChargeFields>({
+  const entries = await client.withoutUnresolvableLinks.getEntries<
+    Skeleton<Contentful.IWorkInChargeFields>
+  >({
     content_type: contentType,
-    order: "-sys.createdAt",
+    order: ["-sys.createdAt"],
   });
 
   return entries;

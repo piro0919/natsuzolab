@@ -2,8 +2,8 @@
 import NoSSR from "@mpth/react-no-ssr";
 import { usePathname } from "next/navigation";
 import noScroll from "no-scroll";
-import { type JSX, ReactNode, useEffect } from "react";
-import { useBoolean, useElementSize } from "usehooks-ts";
+import { type JSX, ReactNode, type RefObject, useEffect, useRef } from "react";
+import { useBoolean, useResizeObserver } from "usehooks-ts";
 import styles from "./style.module.scss";
 import Drawer from "components/Drawer";
 import Footer from "components/Footer";
@@ -14,7 +14,12 @@ export type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  const [footerRef, { height = 0 }] = useElementSize();
+  const footerRef = useRef<HTMLDivElement>(null);
+  const { height = 0 } = useResizeObserver({
+    box: "border-box",
+    // usehooks-ts 3 の型は React 18 の RefObject（null を含まない）のまま
+    ref: footerRef as RefObject<HTMLDivElement>,
+  });
   const {
     setFalse: offIsOpen,
     setTrue: onIsOpen,
